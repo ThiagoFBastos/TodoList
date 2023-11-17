@@ -25,7 +25,10 @@ def cadastro(request):
         user = User.objects.filter(username = username).first()
 
         if user:
-            return HttpResponse('usuário já cadastrado') 
+            params = {
+                'warning': 'usuário já cadastrado'
+            }
+            return render(request, 'users/cadastro.html', params)
 
         user = User.objects.create_user(first_name = first_name, last_name = last_name, username = username, password = password, email = email)
 

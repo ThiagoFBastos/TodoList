@@ -4,6 +4,7 @@
 {% block 'main' %}
     <div class = "container">
         <h1 class = "text-center">Cadastro de usuário</h1>
+        <p class = "text-center text-danger">{{warning}}</p>
         <form method = "post" action = "{% url 'cadastro' %}">
             {% csrf_token %}
             <input class = "form-control" name = "username" placeholder = "username..." type = "text"> <br>
