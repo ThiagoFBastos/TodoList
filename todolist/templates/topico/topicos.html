@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block 'main' %}
+    <div class = "container">
+        <table class = "table">
+            <thead>
+                <tr>
+                    <th>Criado em</th>
+                    <th>Deadline</th>
+                    <th>Nome</th>
+                    <th>Descrição</th>
+                </tr>
+            </thead>
+            <tbody> 
+                {% for topico in topicos %}
+                    <tr>
+                        <td>{{topico.start}}</td>
+                        <td>{{topico.deadline}}</td>
+                        <td>{{topico.name}}</td>
+                        <td>{{topico.description}}</td>
+                        <td><a href = "{% url 'topico.edit' topico.pk %}" class = "btn btn-sm btn-warning">editar</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>   
+        </table>
+    </div>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% load static %}
+<!doctype html>
+<html lang = "pt-br">
+<head>
+	<meta charset = "utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title> {% block 'title' %} {% endblock %} </title>
+    <link href = "{% static 'css/bootstrap.min.css' %}" rel = "stylesheet">
+    {% block 'css' %} {% endblock %}
+    <script src = "https://code.jquery.com/jquery-3.6.4.min.js" type = "text/javascript"></script>
+	<script src = "{% static 'js/bootstrap.min.js' %}" type = "text/javascript"> </script>
+	<script src = "{% static 'js/bootstrap.bundle.min.js' %}" type = "text/javascript"> </script>
+    {% block 'scripts' %} {% endblock %}
+</head>
+<body>
+
+    <nav class = "navbar navbar-expand-lg bg-light navbar-light">
+        <div class = "container-fluid">
+            <a href = "{% url 'site' %}" class="navbar-brand">TodoList</a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav navbar-nav-scroll">
+                    <li class="nav-item dropdown">
+                      <a data-bs-toggle="dropdown" class = "nav-link dropdown-toggle" href = "#" role = "button"> Tópicos </a>
+                      <ul class = "dropdown-menu">
+                        <li> <a class = "dropdown-item" href = "{% url 'topico.cadastro' %}"> Cadastrar </a> </li>
+                        <li> <a class = "dropdown-item" href = "{% url 'topico.all' %}"> Ver tópicos </a> </li>
+                      </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a data-bs-toggle="dropdown" class = "nav-link dropdown-toggle" href = "#" role = "button"> Usuários </a>
+                        <ul class = "dropdown-menu">
+                          {% if not active%}
+                          <li> <a class = "dropdown-item" href = "{% url 'cadastro' %}"> Cadastrar </a> </li>
+                          {% endif %}
+                          {% if active %}
+                          <li> <a class = "dropdown-item" href = "{% url 'profile' %}"> Ver perfil </a> </li>
+                          <li> <a class = "dropdown-item" href = "{% url 'settings' %}"> Configurações </a> </li>
+                          <li> <a class = "dropdown-item" href = "{% url 'logout' %}"> Logout </a> </li>
+                          {% endif %}
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            
+            <form class="d-flex" action = "{% url 'topico.search' %}">
+                <input class="form-control form-control-sm" type="search" placeholder="Search" name = "keywords">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+
+    {% block 'main' %}
+    {% endblock %}
+
+</body>
+</html>

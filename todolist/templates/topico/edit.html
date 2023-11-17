@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block 'title' %}
+Editar tópico
+{% endblock %}
+
+{% block 'main' %}
+<div class = "container">
+    <form method = "post" action = "">
+        {% csrf_token %}
+        <div class = "form-group">
+            <label>Name</label>
+            <input name = "name" type = "text" class = "form-control" value = "{{topico.name}}">
+        </div>
+        <div class = "form-group">
+            <label>Deadline</label>
+            <input name = "deadline" type = "date" class = "form-control" value = "{{topico.deadline.isoformat}}">
+        </div>
+        <div class = "form-group">
+            <label>Name</label>
+            <textarea name = "description" class = "form-control" rows = "10" wrap = "off">{{topico.description}}</textarea>
+        </div>
+        <button class = "btn btn-primary">alterar</button>
+        <a href = "{% url 'topico.delete' topico.pk %}" class = "btn btn-danger">deletar</a>
+    </form>
+</div>
+{% endblock %}

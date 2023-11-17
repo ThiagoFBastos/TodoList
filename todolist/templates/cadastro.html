@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block 'main' %}
+    <div class = "container">
+        <h1 class = "text-center">Cadastro de usuário</h1>
+        <form method = "post" action = "{% url 'cadastro' %}">
+            {% csrf_token %}
+            <input class = "form-control" name = "username" placeholder = "username..." type = "text"> <br>
+            <input class = "form-control" name = "email" placeholder = "email..." type = "email"> <br>
+            <input class = "form-control" name = "password" placeholder = "password..." type = "password"> <br>
+            <button class = "btn btn-primary" type = "submit">cadastrar</button>
+        </form>
+    </div>
+{% endblock %}
+

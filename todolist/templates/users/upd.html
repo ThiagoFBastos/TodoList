@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block 'title' %}
+Alterar usuário
+{% endblock %}
+
+{% block 'main' %}
+<div class = "container">
+    <h1 class = "text-center">Configurações</h1>
+    <form method = "post" action = "{% url 'settings' %}">
+        {% csrf_token %}
+        <div class = "row">
+            <div class = "col form-group">
+                <label>First Name</label>
+                <input type = "text" name = "first_name" class = "form-control" value = "{{user.first_name}}">
+            </div>
+            <div class = "col form-group">
+                <label>Last Name</label>
+                <input type = "text" name = "last_name" class = "form-control" value = "{{user.last_name}}">
+            </div>
+        </div>
+        <div class = "form-group">
+            <label>Email</label>
+            <input type = "email" name = "email" class = "form-control" value = "{{user.email}}">
+        </div>
+        <div class = "form-group">
+            <label>Senha</label>
+            <input type = "password" name = "password" class = "form-control" value = "{{user.password}}">
+        </div>
+        <button type = "submit" class = "btn btn-primary">Enviar</button>
+    </form>
+</div>
+{% endblock %}

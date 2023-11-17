@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{%load static %}
+
+{% block 'title' %}
+Resultados
+{% endblock %}
+
+{% block 'main' %}
+<div class = "container">
+    <table class = "table">
+        <thead>
+            <tr>
+                <td>Adicionado em</td>
+                <td>Deadline</td>
+                <td>Name</td>
+                <td>Description</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for topico in topicos %}
+                <tr>
+                    <td>{{topico.start}}</td>
+                    <td>{{topico.deadline}}</td>
+                    <td>{{topico.name}}</td>
+                    <td>{{topico.description}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
