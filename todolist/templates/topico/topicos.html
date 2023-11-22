@@ -6,8 +6,17 @@
         <table class = "table">
             <thead>
                 <tr>
+                    <th>
+                        <a href = "{% url 'topico.all' %}?asc={% if asc == 0 %} 1 {% else %} 0 {% endif %}">
+                        {% if asc == 0 %}
+                        &uarr;
+                        {% else %}
+                        &darr;
+                        {% endif %}
+                        Deadline
+                        <a>
+                    </th>
                     <th>Criado em</th>
-                    <th>Deadline</th>
                     <th>Nome</th>
                     <th>Descrição</th>
                 </tr>
@@ -15,8 +24,8 @@
             <tbody> 
                 {% for topico in topicos %}
                     <tr>
-                        <td>{{topico.start}}</td>
                         <td>{{topico.deadline}}</td>
+                        <td>{{topico.start}}</td>
                         <td>{{topico.name}}</td>
                         <td>{{topico.description}}</td>
                         <td><a href = "{% url 'topico.edit' topico.pk %}" class = "btn btn-sm btn-warning">editar</a></td>

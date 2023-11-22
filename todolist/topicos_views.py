@@ -30,11 +30,14 @@ def cadastro(request):
 @login_required(login_url = '/todolist/login/')
 @require_http_methods(['GET'])
 def all(request):
+    asc = int(request.GET.get('asc', 1))
     pk = request.user.pk
-    topicos = Topico.objects.filter(Q(user_id = pk) & Q(deadline__gte = date.today().__str__())).order_by('deadline')
+    order_by = '-deadline' if asc else 'deadline'
+    topicos = Topico.objects.filter(Q(user_id = pk) & Q(deadline__gte = date.today().__str__())).order_by(order_by)
     params = {
         'topicos': topicos,
-        'active': True
+        'active': True,
+        'asc': asc,
     }
     return render(request, 'topico/topicos.html', params)
 
