@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block 'title' %}
+{{topico.name}}
+{% endblock %}
+
+{% block 'main' %}
+<div class = "container">
+    <div class = "row">
+        <div class = "col">
+            <h1 class="text-center">{{topico.name}}
+            </h1>
+        </div>
+        <div class = "col text-end col-sm-1">
+            <a href = "{% url 'topico.edit' topico.pk %}" class = "btn btn-sm btn-warning">editar</a>
+        </div>
+    </div>
+    <hr>
+    <div class = "row">
+        <div class = "col">
+            Criação
+        </div>
+        <div class = "col">
+            {{topico.start}}
+        </div>
+    </div>
+    <hr>
+    <div class = "row">
+        <div class = "col">
+            Alterado em
+        </div>
+        <div class = "col">
+            {{topico.updatedAt}}
+        </div>
+    </div>
+    <hr>
+    <div class = "row">
+        <div class = "col">
+            Deadline
+        </div>
+        <div class = "col">
+            {{topico.deadline}}
+        </div>
+    </div>
+    <hr>
+    <div class = "row">
+        <div class = "col">
+            Status
+        </div>
+        <div class = "col">
+            {% if topico.status == 'completed' %}
+            <td><a href = "#" class = "btn btn-sm btn-primary">Completado</a></td>
+            {% elif topico.status == 'ongoing'%}
+            <td><a href = "#" class = "btn btn-sm btn-success">Em andamento</a></td>
+            {% else %}
+            <td><a href = "#" class = "btn btn-sm btn-danger">Cancelado</a></td>
+            {% endif %}
+        </div>
+    </div>
+    <hr>
+    <div class = "row">
+        <div class = "col">
+            Descrição
+        </div>
+        <div class = "col">
+            <p>
+                {{topico.description}}
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}

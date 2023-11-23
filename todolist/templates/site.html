@@ -11,19 +11,24 @@
        <table class = "table">
         <thead>
             <tr>
-                <td>Adicionado em</td>
-                <td>Deadline</td>
-                <td>Name</td>
-                <td>Description</td>
+                <th>Deadline</th>
+                <th>Name</th>
+                <th>Status</th>
             </tr>
         </thead>
         <tbody>
             {% for topico in topicos %}
                 <tr>
-                    <td>{{topico.start}}</td>
                     <td>{{topico.deadline}}</td>
                     <td>{{topico.name}}</td>
-                    <td>{{topico.description}}</td>
+                    {% if topico.status == 'completed' %}
+                        <td><a href = "#" class = "btn btn-sm btn-primary">Completado</a></td>
+                    {% elif topico.status == 'ongoing'%}
+                    <td><a href = "#" class = "btn btn-sm btn-success">Em andamento</a></td>
+                    {% else %}
+                    <td><a href = "#" class = "btn btn-sm btn-danger">Cancelado</a></td>
+                    {% endif %}
+                    <td><a href = "{% url 'topico.details' topico.pk %}" class = "btn btn-sm btn-success">detalhes</a></td>
                     <td><a href = "{% url 'topico.edit' topico.pk %}" class = "btn btn-sm btn-warning">editar</a></td>
                 </tr>
             {% endfor %}

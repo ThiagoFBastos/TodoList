@@ -7,5 +7,6 @@ urlpatterns = [
     path('all/', topicos_views.all, name = 'topico.all'),
     path('search/', topicos_views.search, name = 'topico.search'),
     path('edit/<int:key>/', topicos_views.edit, name = 'topico.edit'),
-    path('delete/<int:key>/', topicos_views.delete, name = 'topico.delete')
+    path('delete/<int:key>/', topicos_views.delete, name = 'topico.delete'),
+    path('details/<int:key>/', topicos_views.details, name = 'topico.details'),
 ]

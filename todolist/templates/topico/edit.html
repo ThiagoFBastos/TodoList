@@ -18,6 +18,14 @@ Editar tópico
             <input name = "deadline" type = "date" class = "form-control" value = "{{topico.deadline.isoformat}}">
         </div>
         <div class = "form-group">
+            <label>Status</label>
+            <select class = "form-control" name = "status">
+                <option {% if topico.status == 'completed' %} selected {% endif %} value = "completed">Completado</option>
+                <option {% if topico.status == 'ongoing' %} selected {% endif %} value = "ongoing">Em andamento</option>
+                <option {% if topico.status == 'canceled' %} selected {% endif %} value = "canceled">Cancelado</option>
+            </select>
+        </div>
+        <div class = "form-group">
             <label>Name</label>
             <textarea name = "description" class = "form-control" rows = "10" wrap = "off">{{topico.description}}</textarea>
         </div>

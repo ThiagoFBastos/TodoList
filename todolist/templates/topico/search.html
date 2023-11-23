@@ -13,6 +13,7 @@ Resultados
                 <td>Adicionado em</td>
                 <td>Deadline</td>
                 <td>Name</td>
+                <td>Status</td>
                 <td>Description</td>
             </tr>
         </thead>
@@ -22,7 +23,15 @@ Resultados
                     <td>{{topico.start}}</td>
                     <td>{{topico.deadline}}</td>
                     <td>{{topico.name}}</td>
+                    {% if topico.status == 'completed' %}
+                        <td><a href = "#" class = "btn btn-sm btn-primary">Completado</a></td>
+                    {% elif topico.status == 'ongoing'%}
+                    <td><a href = "#" class = "btn btn-sm btn-success">Em andamento</a></td>
+                    {% else %}
+                    <td><a href = "#" class = "btn btn-sm btn-danger">Cancelado</a></td>
+                    {% endif %}
                     <td>{{topico.description}}</td>
+                    <td><a href = "{% url 'topico.details' topico.id %}" class = "btn btn-sm btn-success">detalhes</a></td>
                 </tr>
             {% endfor %}
         </tbody>
