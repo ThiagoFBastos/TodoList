@@ -8,6 +8,10 @@ site para criar uma todolist para usuários cadastrados
 - [python3](https://www.python.org/downloads/)
 - [django](https://www.djangoproject.com/)
 
+## Instalação
+1. insira no terminal: python3 manage.py makemigrations
+2. depois insira no terminal: python3 manage.py migrate
+
 ## Uso
 1. no terminal digite: python manage.py runserver
 2. visite a página em localhost:8000/todolist/site
