@@ -5,12 +5,15 @@ site para criar uma todolist para usuários cadastrados
 
 ## Requisitos
 
-- [python3](https://www.python.org/downloads/)
 - [django](https://www.djangoproject.com/)
 
 ## Instalação
-1. insira no terminal: python3 manage.py makemigrations
-2. depois insira no terminal: python3 manage.py migrate
+
+1. crie o ambiente virtual: python3 -m venv env
+2. ative o ambiente virtual: source ./env/bin/activate ou \env\Scripts\activate no windows
+3. instale as dependências: pip install -r requirements.txt
+4. faça as migrações: python3 manage.py makemigrations
+5. execute as migrações: python3 manage.py migrate
 
 ## Uso
 1. no terminal digite: python manage.py runserver
