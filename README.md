@@ -2,11 +2,6 @@
 
 site para criar uma todolist para usuários cadastrados
 
-
-## Requisitos
-
-- [django](https://www.djangoproject.com/)
-
 ## Instalação
 
 1. crie o ambiente virtual: python3 -m venv env
